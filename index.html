@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pedido de Casamento - Samuel & Alessandra</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Roboto&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #fceabb, #f8b500);
+      font-family: 'Roboto', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #5a2a00;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.85);
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(90, 42, 0, 0.3);
+      max-width: 400px;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3em;
+      margin-bottom: 10px;
+      color: #b25e00;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin-bottom: 25px;
+    }
+
+    button {
+      background-color: #b25e00;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1em;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #8c4500;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+
+    /* Fundo animado de cor suave */
+    body::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at center, #fceabb, #f8b500, #fceabb);
+      animation: backgroundShift 15s ease infinite;
+      z-index: -1;
+    }
+
+    @keyframes backgroundShift {
+      0%, 100% { transform: translate(0, 0);}
+      50% { transform: translate(20px, 20px);}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Samuel & Alessandra</h1>
+    <p>Quer casar comigo? 💍</p>
+    <button id="btnPlay">🎵 Tocar Música</button>
+  </div>
+
+  <audio id="musica" loop>
+    <source src="giveon.mp3" type="audio/mpeg" />
+    Seu navegador não suporta áudio.
+  </audio>
+
+  <script>
+    const btnPlay = document.getElementById('btnPlay');
+    const musica = document.getElementById('musica');
+    let tocando = false;
+
+    btnPlay.addEventListener('click', () => {
+      if (!tocando) {
+        musica.play();
+        btnPlay.textContent = "🔇 Pausar Música";
+        tocando = true;
+      } else {
+        musica.pause();
+        btnPlay.textContent = "🎵 Tocar Música";
+        tocando = false;
+      }
+    });
+  </script>
+
+</body>
+</html>
